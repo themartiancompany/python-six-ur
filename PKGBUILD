@@ -22,6 +22,6 @@ check() {
 
 package() {
   cd six-$pkgver
-  python setup.py install --root "$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
