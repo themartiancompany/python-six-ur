@@ -10,7 +10,7 @@ _py="python"
 _pkg="six"
 pkgname="${_py}-${_pkg}"
 pkgver=1.16.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Python 2 and 3 compatibility utilities"
 arch=(
   'any'
