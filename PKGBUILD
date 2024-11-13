@@ -7,7 +7,16 @@
 # Contributer: Allan McRae <allan@archlinux.org>
 
 _py="python"
-_pkg="six"
+_pyver="$( \
+  "${_py}" \
+    -V | \
+    awk \
+      '{print $2}')"
+_pymajver="${_pyver%.*}"
+_pyminver="${_pymajver#*.}"
+_pynextver="${_pymajver%.*}.$(( \
+  ${_pyminver} + 1))"
+_pkg=six
 pkgname="${_py}-${_pkg}"
 pkgver=1.16.0
 pkgrel=9
@@ -15,12 +24,13 @@ pkgdesc="Python 2 and 3 compatibility utilities"
 arch=(
   'any'
 )
-url="https://pypi.python.org/pypi/six/"
+url="https://pypi.python.org/pypi/${_pkg}/"
 license=(
   'MIT'
 )
 depends=(
-  "${_py}"
+  "${_py}>=${_pymajver}"
+  "${_py}<${_pynextver}"
 )
 makedepends=(
   "${_py}-setuptools"
